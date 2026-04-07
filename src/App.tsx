@@ -1,15 +1,20 @@
-import Botao from './componentes/Botao'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import Lista from "./paginas/Lista";
+import Login from "./paginas/Login";
+import Cadastro from "./paginas/Cadastro";
+import NotFound from "./paginas/notFound";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <Home />
-      <h1>Projeto Integrador</h1>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/lista" element={<Lista />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/cadastro" element={<Cadastro />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
