@@ -1,0 +1,161 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* FUNDO */
+body {
+  background-color: #e5e7eb;
+}
+
+/* APP */
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #f3f4f6;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-sair {
+  padding: 6px 12px;
+  border: none;
+  background: #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* BUSCA */
+.busca {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 40px;
+}
+
+.input-busca {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: white;
+}
+
+.input-busca input {
+  border: none;
+  outline: none;
+}
+
+.input-busca svg {
+  color: #6b7280;
+}
+
+/* CARD */
+.card {
+  width: 350px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* TITULOS */
+.card h3 {
+  background: #d1d5db;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* INPUT COM ICONE */
+.input-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px;
+  margin-top: 8px;
+  background: #f9fafb;
+}
+
+.input-icon input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+}
+
+.input-icon svg {
+  color: #3b82f6;
+}
+
+/* LINHA */
+.linha {
+  display: flex;
+  gap: 10px;
+}
+
+/* BOTÕES */
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  background: #3b82f6;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #2563eb;
+}
+
+/* MODAL */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
