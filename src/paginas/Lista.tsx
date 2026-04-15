@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, PlusCircle, ClipboardList } from "lucide-react"; // Importação dos ícones
+import { LogOut, PlusCircle, ClipboardList, Search } from "lucide-react"; // Importação dos ícones
 import "../../style/style.css"
 function Lista() {
   const navigate = useNavigate();
@@ -45,10 +45,12 @@ function Lista() {
       <main className="main-content">
         <div className="titulo-container">
           <h1>Lista de Medicações</h1>
-          <button onClick={() => navigate('/cadastro')} className="btn-novo-cadastro">
-            <PlusCircle size={20} />
-            Novo Cadastro
-          </button>
+          <div className="busca-cadastro">
+        <div className="input-busca">
+          <input type="text" placeholder="Pesquisar Paciente" />
+          <Search size={18} />
+        </div>
+      </div>
         </div>
         
         <div className="tabela-card">

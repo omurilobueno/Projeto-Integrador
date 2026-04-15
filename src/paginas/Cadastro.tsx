@@ -1,99 +1,75 @@
-import { Link } from "react-router-dom";
-import "../../style/style.css"
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { User, IdCard, Pill, Clock, Trash2, Pencil, Save, Search } from "lucide-react";
+import { User, IdCard, Pill, Clock, Trash2, Pencil, Save, Search, List } from "lucide-react";
+import "../../style/style.css";
 
 function Cadastro() {
   const [modal, setModal] = useState("");
+  const navigate = useNavigate();
 
   return (
-    <div className="app">
-
-      {/* HEADER */}
-      <header className="header">
-        <h1 className="logo">Logo</h1>
-
-        <div className="menu">
-          <span>Início</span>
-          <button className="btn-sair">Sair</button>
+    <div className="app-cadastro">
+      <header className="header-cadastro">
+        <h1 className="logo-cadastro">Logo</h1>
+        <div className="menu-cadastro">
+          <Link to="/lista" className="link-menu-lista">
+            <List size={18} />
+            Lista
+          </Link>
+          <button className="btn-sair-simples" onClick={() => navigate('/login')}>Sair</button>
         </div>
       </header>
 
-      {/* BUSCA */}
-      <div className="busca">
-        <div className="input-busca">
-          <input type="text" placeholder="Pesquisar Paciente" />
-          <Search size={18} />
-        </div>
-      </div>
+      
 
-      {/* CARD */}
-      <div className="card">
-
-        <h3>Dados do Paciente</h3>
-
+      <div className="card-cadastro">
+        <h3 className="section-title">Dados do Paciente</h3>
         <div className="input-icon">
           <User size={16} />
           <input type="text" placeholder="Nome do paciente" />
         </div>
-
         <div className="input-icon">
           <IdCard size={16} />
           <input type="text" placeholder="CPF" />
         </div>
 
-        <h3>Data da medicação</h3>
-
+        <h3 className="section-title">Data da medicação</h3>
         <div className="input-icon">
           <Pill size={16} />
           <input type="text" placeholder="Medicamento" />
         </div>
 
-        <div className="linha">
+        <div className="linha-cadastro">
           <div className="input-icon">
             <Pill size={16} />
             <input type="text" placeholder="Dose" />
           </div>
-
           <div className="input-icon">
             <Clock size={16} />
             <input type="time" />
           </div>
         </div>
 
-        {/* BOTÕES */}
-        <div className="acoes">
-          <button className="btn" onClick={() => setModal("excluido")}>
+        <div className="acoes-cadastro">
+          <button className="btn-acao btn-excluir" onClick={() => setModal("excluido")}>
             <Trash2 size={16} />
           </button>
-
-          <button className="btn">
+          <button className="btn-acao btn-editar">
             <Pencil size={16} />
           </button>
-
-          <button className="btn" onClick={() => setModal("salvo")}>
+          <button className="btn-acao btn-salvar" onClick={() => setModal("salvo")}>
             <Save size={16} />
           </button>
         </div>
       </div>
 
-      {/* MODAL */}
       {modal && (
         <div className="overlay" onClick={() => setModal("")}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            
-            {modal === "excluido" && (
-              <p>Cadastro excluído com sucesso!</p>
-            )}
-
-            {modal === "salvo" && (
-              <p>Cadastro realizado com sucesso!</p>
-            )}
-
+          <div className="modal-aviso" onClick={(e) => e.stopPropagation()}>
+            {modal === "excluido" ? <p>Cadastro excluído com sucesso!</p> : <p>Cadastro realizado com sucesso!</p>}
           </div>
         </div>
       )}
-
     </div>
   );
 }
