@@ -2,8 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Lista from "./paginas/Lista";
 import Login from "./paginas/Login";
 import Cadastro from "./paginas/Cadastro";
-import NotFound from "./paginas/notFound";
+import NotFound from "./paginas/NotFound";
 import "./App.css";
+
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Cadastro />} />
       <Route path="*" element={<NotFound />} />
-    </Routes>
+         </Routes>
   );
 }
 
