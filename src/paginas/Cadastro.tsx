@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { User, IdCard, Pill, Clock, Trash2, Pencil, Save, Search, List } from "lucide-react";
+import { LogOut,User, IdCard, Pill, Clock, Trash2, Pencil, Save, Search, List } from "lucide-react";
 import "../../style/style.css";
 
 function Cadastro() {
@@ -9,6 +9,8 @@ function Cadastro() {
 
   return (
     <div className="app-cadastro">
+
+       {/* HEADER */}
       <header className="header-cadastro">
         <h1 className="logo-cadastro">Logo</h1>
         <div className="menu-cadastro">
@@ -16,7 +18,11 @@ function Cadastro() {
             <List size={18} />
             Lista
           </Link>
-          <button className="btn-sair-simples" onClick={() => navigate('/login')}>Sair</button>
+
+          <button onClick={() => navigate("/login")} className="btn-sair-header">
+              <LogOut size={18} />
+              Sair
+            </button>
         </div>
       </header>
 
