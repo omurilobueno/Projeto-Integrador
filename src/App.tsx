@@ -15,7 +15,7 @@ function App() {
       {/* Main routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Cadastro />} />
-      <Route path="/lista" element={<Lista />} />
+
 
       {/* ROTA DE ERRO */}
       <Route path="*" element={<NotFound />} />
