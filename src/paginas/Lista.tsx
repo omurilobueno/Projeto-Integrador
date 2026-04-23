@@ -6,11 +6,11 @@ function Lista() {
   const navigate = useNavigate();
   
   const [medicamentos, setMedicamentos] = useState([
-    { id: 1, paciente: "Nome do Paciente", medicamento: "Nome do Medicamento", horario: "08:00", status: "Administrado" },
-    { id: 2, paciente: "Nome do Paciente", medicamento: "Nome do Medicamento", horario: "08:00", status: "Administrado" },
-    { id: 3, paciente: "Nome do Paciente", medicamento: "Nome do Medicamento", horario: "08:00", status: "Administrado" },
-    { id: 4, paciente: "Nome do Paciente", medicamento: "Nome do Medicamento", horario: "08:00", status: "Administrado" },
-    { id: 5, paciente: "Nome do Paciente", medicamento: "Nome do Medicamento", horario: "08:00", status: "Administrado" },
+    { id: 1, paciente: "João Silva", medicamento: "Dipirona", horario: "08:00", status: "Administrado" },
+    { id: 2, paciente: "Maria Oliveira", medicamento: "Amoxicilina", horario: "09:30", status: "Pendente" },
+    { id: 3, paciente: "Carlos Souza", medicamento: "Omeprazol", horario: "07:00", status: "Administrado" },
+    { id: 4, paciente: "Ana Costa", medicamento: "Losartana", horario: "10:00", status: "Pendente" },
+    { id: 5, paciente: "Roberto Santos", medicamento: "Paracetamol", horario: "12:00", status: "Pendente" },
     { id: 6, paciente: "Nome do Paciente", medicamento: "Nome do Medicamento", horario: "08:00", status: "Administrado" },
   ]);
 
