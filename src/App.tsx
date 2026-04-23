@@ -4,22 +4,25 @@ import Cadastro from "./paginas/Cadastro";
 import Lista from "./paginas/Lista";
 import Login from "./paginas/Login";
 import NotFound from "./paginas/NotFound";
+import "./App.css";
 
 function App() {
   return (
     <Routes>
-
-      {/* REDIRECIONAMENTO INICIAL */}
+      {/* Redirect root to login */}
       <Route path="/" element={<Navigate to="/login" />} />
 
-      {/* ROTAS PRINCIPAIS */}
+      {/* Main routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Cadastro />} />
       <Route path="/lista" element={<Lista />} />
 
       {/* ROTA DE ERRO */}
       <Route path="*" element={<NotFound />} />
-
+      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/cadastro" element={<Cadastro />} />
+      <Route path="/lista/:nome" element={<Lista />} />
     </Routes>
   );
 }
