@@ -30,7 +30,18 @@ body {
   align-items: center;
 }
 
-.logo-texto { font-size: 32px; font-weight: 800; color: #007bff; }
+logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-cadastro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
 
 .nav-section { display: flex; align-items: center; gap: 30px; }
 

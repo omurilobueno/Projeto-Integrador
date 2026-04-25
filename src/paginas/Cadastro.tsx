@@ -12,7 +12,7 @@ function Cadastro() {
 
        {/* HEADER */}
       <header className="header-cadastro">
-        <h1 className="logo-cadastro">Logo</h1>
+       <img src="/Logo_MedicineTime.WEBP" alt="Logo Medicine Time" className="logo-img" />
         <div className="menu-cadastro">
           <Link to="/lista" className="link-menu-lista">
             <List size={18} />
