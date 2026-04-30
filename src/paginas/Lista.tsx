@@ -1,51 +1,54 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { LogOut, ClipboardList, Search } from "lucide-react";
+import { LogOut, ClipboardList, Search, Trash2, Pencil } from "lucide-react";
 import "../../style/style.css";
 
 function Lista() {
   const navigate = useNavigate();
-
-  const [medicamentos, setMedicamentos] = useState([
-    { id: 1, paciente: "João Silva", medicamento: "Dipirona", horario: "08:00", status: "Administrado" },
-    { id: 2, paciente: "Maria Oliveira", medicamento: "Amoxicilina", horario: "09:30", status: "Pendente" },
-    { id: 3, paciente: "Carlos Souza", medicamento: "Omeprazol", horario: "07:00", status: "Administrado" },
-    { id: 4, paciente: "Ana Costa", medicamento: "Losartana", horario: "10:00", status: "Pendente" },
-    { id: 5, paciente: "Roberto Santos", medicamento: "Paracetamol", horario: "12:00", status: "Pendente" },
-    { id: 6, paciente: "Nome do Paciente", medicamento: "Nome do Medicamento", horario: "08:00", status: "Administrado" },
-  ]);
-
+  const [medicamentos, setMedicamentos] = useState<any[]>([]);
   const [dataHora, setDataHora] = useState("");
+  const [busca, setBusca] = useState("");
 
-  // ⏰ Atualiza o relógio em tempo real
+  // 📥 Carrega os dados salvos no navegador ao abrir a página
+  useEffect(() => {
+    const dadosSalvos = localStorage.getItem("medicamentos");
+    if (dadosSalvos) {
+      setMedicamentos(JSON.parse(dadosSalvos));
+    }
+  }, []);
+
+  // ⏰ Atualiza o relógio a cada segundo
   useEffect(() => {
     const interval = setInterval(() => {
       const agora = new Date();
-
-      const data = agora.toLocaleDateString("pt-BR");
-      const hora = agora.toLocaleTimeString("pt-BR");
-
-      setDataHora(`${data} - ${hora}`);
+      setDataHora(`${agora.toLocaleDateString("pt-BR")} - ${agora.toLocaleTimeString("pt-BR")}`);
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
+  // 🔄 Alterna entre "Pendente" e "Administrado"
   const alternarStatus = (id: number) => {
-    setMedicamentos(
-      medicamentos.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              status:
-                item.status === "Administrado"
-                  ? "Pendente"
-                  : "Administrado",
-            }
-          : item
-      )
+    const novaLista = medicamentos.map((item) =>
+      item.id === id ? { ...item, status: item.status === "Administrado" ? "Pendente" : "Administrado" } : item
     );
+    setMedicamentos(novaLista);
+    localStorage.setItem("medicamentos", JSON.stringify(novaLista));
   };
+
+  // 🗑️ Exclui um paciente da lista
+  const excluirItem = (id: number) => {
+    if (window.confirm("Tem certeza que deseja excluir este paciente?")) {
+      const novaLista = medicamentos.filter(item => item.id !== id);
+      setMedicamentos(novaLista);
+      localStorage.setItem("medicamentos", JSON.stringify(novaLista));
+    }
+  };
+
+  // 💡 Lógica do Filtro de Busca
+  const medicamentosFiltrados = medicamentos.filter((item) =>
+    item.paciente.toLowerCase().includes(busca.toLowerCase()) ||
+    item.medicamento.toLowerCase().includes(busca.toLowerCase())
+  );
 
   return (
     <div className="pagina-lista">
@@ -69,30 +72,28 @@ function Lista() {
         </div>
       </header>
 
-      {/* CONTEÚDO */}
+      {/* CONTEÚDO PRINCIPAL */}
       <main className="main-content">
 
-        {/* TOPO */}
         <div className="topo-lista">
-
           <h1>Lista de Medicações</h1>
-
-          {/* RELÓGIO */}
-          <div className="relogio">
-            {dataHora}
-          </div>
-
-          {/* BUSCA */}
-          <div className="busca-cadastro">
-            <div className="input-busca">
-              <input type="text" placeholder="Pesquisar Paciente" />
-              <Search size={18} />
-            </div>
-          </div>
-
+          <div className="relogio">{dataHora}</div>
         </div>
 
-        {/* TABELA */}
+        {/* BARRA DE PESQUISA */}
+        <div className="busca-container">
+          <div className="input-busca">
+            <input 
+              type="text" 
+              placeholder="Pesquisar paciente ou medicamento..." 
+              value={busca}
+              onChange={(e) => setBusca(e.target.value)}
+            />
+            <Search size={18} />
+          </div>
+        </div>
+
+        {/* TABELA DE DADOS */}
         <div className="tabela-card">
           <table>
             <thead>
@@ -101,31 +102,58 @@ function Lista() {
                 <th>Medicamento</th>
                 <th>Horário</th>
                 <th>Status</th>
+                <th style={{ textAlign: 'center' }}>Ações</th>
               </tr>
             </thead>
 
             <tbody>
-              {medicamentos.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.paciente}</td>
-                  <td>{item.medicamento}</td>
-                  <td>{item.horario}</td>
+              {medicamentosFiltrados.length > 0 ? (
+                medicamentosFiltrados.map((item) => (
+                  <tr key={item.id}>
+                    <td>{item.paciente}</td>
+                    <td>{item.medicamento}</td>
+                    <td>{item.horario}</td>
+                    <td>
+                      <button
+                        className={`status-btn ${item.status.toLowerCase()}`}
+                        onClick={() => alternarStatus(item.id)}
+                      >
+                        {item.status}
+                      </button>
+                    </td>
+                    <td>
+                      <div className="acoes-tabela">
+                        {/* BOTÃO EDITAR (LÁPIS) */}
+                        <button 
+                          className="btn-editar-tabela"
+                          onClick={() => navigate(`/cadastro/${item.id}`)}
+                          title="Editar Paciente"
+                        >
+                          <Pencil size={18} />
+                        </button>
 
-                  <td>
-                    <button
-                      className={`status-btn ${item.status.toLowerCase()}`}
-                      onClick={() => alternarStatus(item.id)}
-                    >
-                      {item.status}
-                    </button>
+                        {/* BOTÃO EXCLUIR (LIXEIRA) */}
+                        <button 
+                          className="btn-excluir-tabela"
+                          onClick={() => excluirItem(item.id)}
+                          title="Excluir Paciente"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={5} style={{ textAlign: 'center', padding: '30px', color: '#888' }}>
+                    {busca ? "Nenhum resultado encontrado." : "Nenhum paciente cadastrado."}
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
-
           </table>
         </div>
-
       </main>
     </div>
   );
