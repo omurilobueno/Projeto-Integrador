@@ -127,9 +127,6 @@ function Login() {
               <span>Lembrar de mim</span>
             </label>
 
-            <a href="/esqueci-senha" className="link-esqueci">
-              Esqueci minha senha
-            </a>
 
           </div>
 
@@ -141,13 +138,6 @@ function Login() {
           >
             Entrar
           </button>
-
-          <p className="cadastro-texto">
-            Não tem uma conta?{" "}
-            <a href="/cadastro" className="cadastro-link">
-              Cadastre-se
-            </a>
-          </p>
 
         </div>
       </div>
