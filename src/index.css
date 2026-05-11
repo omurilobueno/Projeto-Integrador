@@ -47,3 +47,340 @@
   height: 34%;
   background-color: gray;
 }
+
+/* ─────────────────────────────────────────
+   RESET BÁSICO
+───────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+/* ─────────────────────────────────────────
+   CONTAINER PRINCIPAL (dois painéis)
+───────────────────────────────────────── */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ─────────────────────────────────────────
+   PAINEL ESQUERDO — imagem
+───────────────────────────────────────── */
+.left {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay escuro sobre a imagem */
+.left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 20, 50, 0.3) 0%,
+    rgba(10, 20, 50, 0.75) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
+}
+
+.left-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.left-titulo {
+  font-size: 40px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+.left-sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────
+   PAINEL DIREITO — formulário
+───────────────────────────────────────── */
+.right {
+  width: 460px;
+  flex-shrink: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-header {
+  padding: 28px 40px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1d4ed8;
+  letter-spacing: -0.5px;
+}
+
+.right-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.right-body h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.right-body > p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 32px;
+}
+
+/* ─────────────────────────────────────────
+   LABELS E INPUTS
+───────────────────────────────────────── */
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+/* Wrapper com ícone dentro do input */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-icone {
+  position: absolute;
+  left: 13px;
+  font-size: 14px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 11px 13px 11px 38px;
+  font-size: 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  outline: none;
+  background: #f8fafc;
+  color: #0f172a;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.input-wrapper input:focus {
+  border-color: #1d4ed8;
+  background: #fff;
+}
+
+.input-wrapper input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botão mostrar/ocultar senha */
+.btn-olho {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1d4ed8;
+  padding: 4px;
+}
+
+/* ─────────────────────────────────────────
+   LINHA "LEMBRE DE MIM" + "ESQUECI"
+───────────────────────────────────────── */
+.remember {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 400; /* sobrescreve o label global */
+}
+
+.remember-label input[type="checkbox"] {
+  accent-color: #1d4ed8;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.link-esqueci {
+  font-size: 13px;
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link-esqueci:hover {
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────
+   MENSAGEM DE ERRO
+───────────────────────────────────────── */
+.erro {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #b91c1c;
+  margin-bottom: 20px;
+}
+
+/* ─────────────────────────────────────────
+   BOTÃO DE LOGIN
+───────────────────────────────────────── */
+.btn-login {
+  width: 100%;
+  padding: 13px;
+  background: #1d4ed8;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-login:hover:not(:disabled) {
+  background: #1e40af;
+}
+
+.btn-login:disabled,
+.btn-login.carregando {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner de carregamento */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* ─────────────────────────────────────────
+   LINK DE CADASTRO
+───────────────────────────────────────── */
+.cadastro-texto {
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.cadastro-link {
+  color: #1d4ed8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cadastro-link:hover {
+  text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVO — tela pequena oculta a imagem
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left {
+    height: 200px;
+    flex: none;
+  }
+
+  .left-titulo {
+    font-size: 26px;
+  }
+
+  .left-overlay {
+    padding: 24px;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .right-body {
+    padding: 32px 24px;
+  }
+}
