@@ -123,14 +123,8 @@ function Lista() {
                     </td>
                     <td>
                       <div className="acoes-tabela">
-                        {/* BOTÃO EDITAR (LÁPIS) */}
-                        <button 
-                          className="btn-editar-tabela"
-                          onClick={() => navigate(`/cadastro/${item.id}`)}
-                          title="Editar Paciente"
-                        >
-                          <Pencil size={18} />
-                        </button>
+                        
+                        
 
                         {/* BOTÃO EXCLUIR (LIXEIRA) */}
                         <button 
