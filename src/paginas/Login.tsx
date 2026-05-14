@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import logoImg from "../assets/logo.png"; // Certifique-se de que o nome do arquivo está correto
 import "../index.css";
 
 function Login() {
@@ -32,7 +33,6 @@ function Login() {
     }
 
     setErro("");
-
     navigate("/lista");
   }
 
@@ -44,22 +44,18 @@ function Login() {
 
   return (
     <div className="container">
-
       <div className="left">
         <img
           src="https://images.unsplash.com/photo-1584515933487-779824d29309"
           alt="Profissional de saúde"
         />
-
         <div className="left-overlay">
           <div className="left-badge">Sistema de Saúde</div>
-
           <h2 className="left-titulo">
             Cuidado com
             <br />
             quem importa.
           </h2>
-
           <p className="left-sub">
             Gerencie medicações com segurança e agilidade.
           </p>
@@ -67,21 +63,20 @@ function Login() {
       </div>
 
       <div className="right">
-
         <div className="right-header">
-          <div className="logo">+ MediControl</div>
+          {/* AQUI ESTÁ A LOGO SUBSTITUINDO O TEXTO */}
+          <div className="logo-container-login">
+            <img src={logoImg} alt="Medicine Time Logo" className="logo-login-img" />
+          </div>
         </div>
 
         <div className="right-body">
-
           <h2>Bem-vindo de volta</h2>
           <p>Acesse sua conta para continuar.</p>
 
           <label htmlFor="email">E-mail</label>
-
           <div className="input-wrapper">
             <span className="input-icone">✉</span>
-
             <input
               id="email"
               type="email"
@@ -93,10 +88,8 @@ function Login() {
           </div>
 
           <label htmlFor="senha">Senha</label>
-
           <div className="input-wrapper">
             <span className="input-icone">🔒</span>
-
             <input
               id="senha"
               type={mostrarSenha ? "text" : "password"}
@@ -105,7 +98,6 @@ function Login() {
               onChange={(e) => setSenha(e.target.value)}
               onKeyDown={apertouEnter}
             />
-
             <button
               type="button"
               className="btn-olho"
@@ -116,18 +108,14 @@ function Login() {
           </div>
 
           <div className="remember">
-
             <label className="remember-label">
               <input
                 type="checkbox"
                 checked={lembrar}
                 onChange={(e) => setLembrar(e.target.checked)}
               />
-
               <span>Lembrar de mim</span>
             </label>
-
-
           </div>
 
           {erro && <p className="erro">⚠️ {erro}</p>}
@@ -138,7 +126,6 @@ function Login() {
           >
             Entrar
           </button>
-
         </div>
       </div>
     </div>
